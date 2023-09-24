@@ -5,8 +5,9 @@ import Linkedin from './components/Linkedin.vue'
 </script>
 
 <template>
-<div class="bg-app-background bg-no-repeat bg-cover min-h-screen pt-20 flex flex-col font-cabin">
+<div class="bg-app-background bg-no-repeat bg-cover min-h-screen pt-20 px-1 flex flex-col gap-2 font-cabin">
 <Banner></Banner>
+<div class="h-8"></div>
 <Github></Github>
 <Linkedin></Linkedin>
 </div>
