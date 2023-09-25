@@ -1,13 +1,13 @@
 <script setup>
 import { ref, computed } from 'vue'
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 const props = defineProps(['githubData'])
 
 
 const convertedDate = computed(() => {
         const dateString = props.githubData[0]['created_at']
-        return moment(dateString).format('MMM Do YYYY')
+        return dayjs(dateString).format('MMM D, YYYY')
 })
 
 
