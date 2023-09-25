@@ -1,10 +1,10 @@
 <script setup>
-import { computed, onBeforeMount, onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import Banner from './components/Banner.vue' 
 import Github from './components/Github.vue'
 import Linkedin from './components/Linkedin.vue'
 
-const githubData = ref('')
+const githubData = ref(null)
 const API_URL = 'https://api.github.com/users/superwizardclass/events'
 const fetchGithubData = async (url) => {
   const response = await fetch(url)
@@ -19,10 +19,10 @@ onMounted(() => {
 </script>
 
 <template>
-<div class="bg-app-background bg-no-repeat bg-cover min-h-screen pt-20 px-1 flex flex-col gap-2 font-cabin">
+<div class="bg-app-background bg-no-repeat bg-cover bg-left lg:bg-left transition-all min-h-screen pt-20 px-1 flex flex-col gap-2 lg:gap-4 font-cabin">
 <Banner></Banner>
-<div class="h-8"></div>
-<Github :data="githubData"></Github>
+<div class="h-8 lg:h-14"></div>
+<Github v-if="githubData" :github-data="githubData"></Github>
 <Linkedin></Linkedin>
 </div>
 </template>
