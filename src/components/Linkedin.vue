@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
   <a
-    href="https://www.google.ca"
+    href="https://www.linkedin.com/in/dan3000/"
     class="container rounded-2xl py-4 mx-auto max-w-xl transition-all bg-opacity-70 hover:bg-opacity-100 bg-stone-800 hover:bg-cyan-900 flex items-center flex-row justify-center gap-4 lg:gap-6 text-neutral-200"
   >
     <div class="">
