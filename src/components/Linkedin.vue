@@ -1,17 +1,14 @@
-<script setup></script>
+<script setup>
+const props = defineProps(['url'])
+</script>
 <template>
-  <a
-    href="https://www.linkedin.com/in/dan3000/"
-    class="container rounded-2xl py-4 mx-auto max-w-xl transition-all bg-opacity-70 hover:bg-opacity-100 bg-stone-800 hover:bg-cyan-900 flex items-center flex-row justify-center gap-4 lg:gap-6 text-neutral-200"
-  >
+  <a :href="url"
+    class="container rounded-2xl py-4 mx-auto max-w-xl transition-all bg-opacity-70 hover:bg-opacity-100 bg-stone-800 hover:bg-cyan-900 flex items-center flex-row justify-center gap-4 lg:gap-6 text-neutral-200">
     <div class="">
-      <p
-        class="lg:text-lg"
-        >Dan S.</p
-      >
+      <p class="lg:text-lg">Dan S.</p>
       <p class="text-xs lg:text-base text-neutral-300">Software Developer</p>
     </div>
-    <img class="w-8 lg:w-12" src="../components/icons/LI-In-Bug.png" />
-</a>
+    <img class="w-8 lg:w-12" src="../assets/LI-In-Bug.png" />
+  </a>
 </template>
 <style scoped></style>
