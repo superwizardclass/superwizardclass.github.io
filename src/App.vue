@@ -1,22 +1,32 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import dayjs from 'dayjs'
+//import { Octokit } from 'octokit'
 import Banner from './components/Banner.vue'
 import Github from './components/Github.vue'
 import Linkedin from './components/Linkedin.vue'
 import Info from './components/Info.vue'
 
 const githubData = ref(null)
-const API_URL = 'https://api.github.com/users/superwizardclass/events'
+const API_URL = 'https://api.github.com/users/superwizardclass'
 const BLOG_URL = 'https://superwizardclass.github.io/blog/'
 const GH_URL = 'https://github.com/superwizardclass'
 const LI_URL = 'https://www.linkedin.com/in/dan3000/'
+
+// TODO: look further into octokit integration for GitHub API authentication 
+/** 
+const octokit = new Octokit({
+  
+})
+*/
+
 const fetchGithubData = async (url) => {
   const response = await fetch(url)
   const data = await response.json()
   githubData.value = data
 }
 
+// Not used because GH public events api not used anymore
 const convertedDate = computed(() => {
   const dateString = githubData.value[0]['created_at']
   return dayjs(dateString).format('MMM D, YYYY')
@@ -41,10 +51,11 @@ onMounted(() => {
       </div>
     </Info>
     <Info v-if="githubData" :url="GH_URL">
-      <img class="w-10 lg:w-12 rounded-full" :src="githubData[0]['actor']['avatar_url']">
+      <img class="w-10 lg:w-12 rounded-full" :src="githubData['avatar_url']">
       <div class="">
-        <p class="transition-all lg:text-lg">{{ githubData[0]['actor']['display_login'] }}</p>
-        <p class="text-xs lg:text-sm">Last Activity: {{ convertedDate }}</p>
+        <p class="transition-all lg:text-lg">{{ githubData['login'] }}</p>
+        <p class="text-xs lg:text-base">GitHub</p>
+        <!--<p class="text-xs lg:text-sm">Last Activity: {{ convertedDate }}</p>-->
       </div>
       <img class="w-10 lg:w-12" src="./assets/github-mark-white.png">
     </Info>
@@ -54,7 +65,7 @@ onMounted(() => {
     <Info :url="LI_URL">
       <div class="">
         <p class="lg:text-lg">Dan S.</p>
-        <p class="text-xs lg:text-base text-neutral-300">Software Developer</p>
+        <p class="text-xs lg:text-base text-neutral-300">LinkedIn</p>
       </div>
       <img class="w-10 lg:w-14" src="./assets/LI-In-Bug.png" />
     </Info>
